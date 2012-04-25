@@ -1,0 +1,19 @@
+<h1>Listing doctypes</h1> 
+<%= link_to 'New Doctype', new_doctype_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @doctypes.each do |doctype| %>
+  <tr>
+    <td><%= doctype.name %></td>
+    <td><%= link_to 'Edit', edit_doctype_path(doctype) %></td>
+    <td><%= link_to 'Delete', doctype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

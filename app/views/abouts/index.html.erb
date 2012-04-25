@@ -1,0 +1,29 @@
+<h1>Listing abouts</h1>
+
+<table>
+  <tr>
+    <th>About url</th>
+    <th>Company</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @abouts.each do |about| %>
+  <tr>
+    <td><%= about.about_url %></td>
+    <td><%= about.company_id %></td>
+    <td><%= about.title %></td>
+    <td><%= about.description %></td>
+    <td><%= link_to 'Show', about %></td>
+    <td><%= link_to 'Edit', edit_about_path(about) %></td>
+    <td><%= link_to 'Destroy', about, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New About', new_about_path %>

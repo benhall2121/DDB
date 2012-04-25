@@ -1,0 +1,37 @@
+<html>
+<head>
+
+</head>
+
+<body>
+
+
+<%= @sent_email.name %>,
+<br/>
+<br/>
+
+You have just been signed up for the Document Deposit Box for <%= @company_name %>. Your login credentials are:
+
+<br/>
+<br/>
+<b>Username:</b> <%= @sent_email.username %>
+<br/>
+<b>Password:</b> <%= @password %>
+
+<br/>
+<br/>
+
+To view your documents online please login <%= link_to "here", @current_url + company_path(@sent_email.company_id) %>.
+
+<br/>
+<br/>
+
+Thanks you,
+
+<br/>
+<br/>
+
+<%= @company_name %>
+
+</body>
+</html>

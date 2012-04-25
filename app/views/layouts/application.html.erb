@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Deposit Box</title>
+  
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag 'jquery', 'application' %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+  <%= javascript_include_tag 'rails' %>
+  <%= csrf_meta_tag %>
+  
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2677869-20']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+
+<!-- all_wrapper -->
+<div class="all_wrapper">
+
+<!-- header_wrapper -->	
+<div class="header_wrapper">	
+ 
+ <!-- main_header_wrapper -->
+ <div class="main_header_wrapper">
+   <div style="height:50px;">
+    
+   </div>
+   <!-- color_wrapper -->
+   <div class="color_wrapper">
+   	 <!-- logo_wrapper -->
+   	 <div class="logo_wrapper">
+       <% if users_company != false %>
+         <% if @user_company.logo.file?  %>
+          <%= link_to image_tag(@user_company.logo.url(:small), :style => 'margin-top:-50px;'), company_path(@user_company.id) %>
+         <% else %>
+          <%= link_to @user_company.company_name, company_path(@user_company.id) %>
+         <% end %>
+       <% else %>
+         <%= link_to image_tag('S-160x160.png', :style => 'margin-top:-50px;'), root_url() %>
+       <% end %>
+     </div>
+     <!-- End logo_wrapper -->
+     <!-- navigation_wrapper -->
+     <div class="navigation_wrapper">
+     	<div class="left_nav">
+          <% if users_company == false %>
+     		<%= link_to 'Home', root_url() %>
+          <% else %>
+     		<%= link_to 'Home', company_path(@user_company) %>
+     		<% if current_company %>
+     		  | <%= link_to 'Users', users_path() %> 
+     		  | <%= link_to 'Document Types', doctypes_path() %>
+     		  | <%= link_to 'Documents', documents_path() %>
+     		<% elsif current_user %>
+     		  | <%= link_to 'Documents', index_current_user_docs_path() %>
+     		<% end %>
+          <% end %>
+     	</div>
+     	<div class="right_nav">
+          <% if users_company == false %>
+            <!-- Company Sign In if on main page -->
+            <% if !current_company %>
+              <%= link_to "Company Sign Up", sign_up_path() %>  |
+              <%= link_to "Company Sign In", log_in_path() %>	
+            <% else %>
+              <%= link_to "Company Sign Out", log_out_path() %>
+            <% end %>
+            <!-- End Company Sign In if on main page -->
+          <% else %>  
+            <!-- User Sign In if on company page -->
+            <% if !current_user %>
+              <%= link_to "User Sign In", user_log_in_path() %>	
+            <% else %>
+              You are logged in as <%= current_user.name %> | 
+              <%= link_to "User Sign Out", user_log_out_path() %>
+            <% end %>
+            
+            <% if current_company %>
+              | <%= link_to "Company Sign Out", log_out_path() %>
+            <% end %>
+            
+            <!-- End User Sign In if on company page -->
+          <% end %>
+     	</div>
+     </div>
+     <!-- End navigation_wrapper -->
+   </div>
+   <!-- End color_wrapper -->
+ </div>
+ <!-- End main_header_wrapper -->
+  
+ 
+   <% if !flash.blank? %>
+      <div class="flash_notice" style="text-align:center;">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+    <% end %>
+    
+</div>
+<!-- end header_wrapper -->
+
+<%= yield %>
+</div>
+<!-- End all_wrapper -->
+
+</body>
+</html>
