@@ -3,7 +3,7 @@ server "benerino.com", :app, :web, :db, :primary => true
 
 set :user, 'demo'
 set :keep_releases, 3 
-set :repository,  "git@github.com:benhall2121/ddb.git" # replace neerajdotname with your github username
+set :repository,  "git@github.com:benhall2121/DDB.git" # replace neerajdotname with your github username
 set :use_sudo, false
 set :scm, :git
 set :deploy_via, :copy
