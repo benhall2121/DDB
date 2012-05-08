@@ -23,6 +23,8 @@ DDB::Application.routes.draw do
   get "index_current_user_docs" => "documents#index_current_user_docs", :as => "index_current_user_docs"
   
   match '/:company_usersname' => 'companies#show'
+
+  get "doc_phone/:user_id/:username/:password" => "documents#doc_phone", :as => "doc_phone"
   
   root :to => "companies#home"
   

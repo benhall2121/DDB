@@ -1,7 +1,42 @@
 class DocumentsController < ApplicationController
   before_filter :require_company, :except => [:index_current_user_docs]	
   before_filter :require_user, :only => [:index_current_user_docs]
+  skip_before_filter :require_company, :only => [:doc_phone]
 	
+
+  def doc_phone
+    @user = User.authenticate(params[:username], params[:password]);
+    
+    if @user
+      @docs = @user.documents.find(:all, :conditions => ['user_id = ?',params[:user_id]], :order => 'updated_at desc')
+      respond_to do |format|
+        format.iphone {
+          
+          #User Info
+          name = 'We are great'
+          
+          
+        render :text => "#{name}" 
+
+
+        }   
+        format.html {redirect_to root_url, :notice => "Logged in!"} 
+        format.xml {redirect_to root_url, :notice => "Logged in!" }   
+      end
+    else
+      flash[:notice] = "Invalid username or password"
+      
+      respond_to do |format|
+        format.iphone {render :text => "No" }   
+        format.html {render "new"} 
+        format.xml {render "new"}   
+      end
+    end
+
+
+
+  end
+
   # GET /documents
   # GET /documents.xml
   def index

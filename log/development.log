@@ -9263,3 +9263,205 @@ Started GET "/index_current_user_docs" for 127.0.0.1 at Wed Apr 25 16:25:24 -070
   [1m[35mCACHE (0.0ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
 Rendered documents/index.html.erb within layouts/application (69.4ms)
 Completed 200 OK in 185ms (Views: 74.7ms | ActiveRecord: 1.3ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/sidework/ddb/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 13:39:30 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 65ms (Views: 64.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at Mon May 07 13:39:35 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 57ms (Views: 56.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/BenerinoStudios" for 127.0.0.1 at Mon May 07 13:39:48 -0700 2012
+  Processing by CompaniesController#show as HTML
+  Parameters: {"company_usersname"=>"BenerinoStudios"}
+  [1m[36mSQL (350.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mCompany Load (0.7ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`username` = 'BenerinoStudios' LIMIT 1
+  [1m[36mCompany Load (0.5ms)[0m  [1mSELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1[0m
+Rendered companies/show.html.erb within layouts/application (209.5ms)
+Completed 200 OK in 1859ms (Views: 319.5ms | ActiveRecord: 351.9ms)
+
+
+Started GET "/user_log_in" for 127.0.0.1 at Mon May 07 13:39:54 -0700 2012
+  Processing by SessionsController#new_user as HTML
+  [1m[35mCompany Load (0.3ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
+Rendered sessions/new_user.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 99ms (Views: 98.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions_create_user" for 127.0.0.1 at Mon May 07 13:40:02 -0700 2012
+  Processing by SessionsController#create_user as HTML
+  Parameters: {"commit"=>"Log in", "username"=>"benhall2121", "authenticity_token"=>"r3xfgI/Ovd4i8tCm8ur1/27r3p9og44VWGJd2weu18U=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1
+Redirected to http://localhost:3000/users/16
+Completed 302 Found in 194ms
+
+
+Started GET "/users/16" for 127.0.0.1 at Mon May 07 13:40:02 -0700 2012
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1[0m
+  [1m[35mCompany Load (0.4ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 186ms (Views: 119.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/index_current_user_docs" for 127.0.0.1 at Mon May 07 13:40:05 -0700 2012
+  Processing by DocumentsController#index_current_user_docs as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1
+  [1m[36mDocument Load (22.5ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (`documents`.user_id = 16)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1
+  [1m[36mDoctype Load (0.3ms)[0m  [1mSELECT `doctypes`.* FROM `doctypes` WHERE `doctypes`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `doctypes`.* FROM `doctypes` WHERE `doctypes`.`id` = 1 LIMIT 1[0m
+  [1m[35mCompany Load (0.4ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `companies`.* FROM `companies` WHERE `companies`.`id` = 7 LIMIT 1
+Rendered documents/index.html.erb within layouts/application (194.0ms)
+Completed 200 OK in 317ms (Views: 209.4ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 15:23:56 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (211.4ms)
+Completed 200 OK in 436ms (Views: 375.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 16:02:26 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (50.4ms)
+Completed 200 OK in 60ms (Views: 58.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 16:03:18 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (76.2ms)
+Completed 200 OK in 90ms (Views: 88.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 16:48:54 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 16:49:04 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 47ms (Views: 46.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 16:55:12 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1[0m
+Completed 500 Internal Server Error in 443ms
+
+NameError (uninitialized constant DocumentsController::Documents):
+  app/controllers/documents_controller.rb:11:in `doc_phone'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (16.5ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (119.8ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (168.2ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 16:55:45 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1
+  [1m[36mDocument Load (13.0ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (user_id = '16') ORDER BY updated_at desc[0m
+Completed 500 Internal Server Error in 224ms
+
+ActionView::MissingTemplate (Missing template documents/doc_phone with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :erb, :rjs, :rhtml, :rxml]} in view paths "/Users/Ben/Desktop/Work/sidework/ddb/app/views"):
+  
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 16:55:59 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1
+  [1m[36mDocument Load (0.5ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (`documents`.user_id = 16) AND (user_id = '16') ORDER BY updated_at desc[0m
+Completed 500 Internal Server Error in 119ms
+
+ActionView::MissingTemplate (Missing template documents/doc_phone with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :erb, :rjs, :rhtml, :rxml]} in view paths "/Users/Ben/Desktop/Work/sidework/ddb/app/views"):
+  
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 17:04:25 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1
+  [1m[36mDocument Load (0.5ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (`documents`.user_id = 16) AND (user_id = '16') ORDER BY updated_at desc[0m
+Completed 500 Internal Server Error in 231ms
+
+ActionView::MissingTemplate (Missing template documents/doc_phone with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :erb, :rjs, :rhtml, :rxml]} in view paths "/Users/Ben/Desktop/Work/sidework/ddb/app/views"):
+  
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.9ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 17:05:03 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (77.9ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1
+  [1m[36mDocument Load (0.4ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (`documents`.user_id = 16) AND (user_id = '16') ORDER BY updated_at desc[0m
+Completed 500 Internal Server Error in 221ms
+
+NameError (uninitialized constant Mime::IPHONE):
+  app/controllers/documents_controller.rb:13:in `doc_phone'
+  app/controllers/documents_controller.rb:12:in `doc_phone'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.2ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (110.0ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (158.4ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/sidework/ddb/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 17:08:52 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[36mSQL (83.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1
+  [1m[36mDocument Load (19.2ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (`documents`.user_id = 16) AND (user_id = '16') ORDER BY updated_at desc[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 571ms
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 17:08:55 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 36ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/doc_phone/16/benhall2121/212134" for 127.0.0.1 at Mon May 07 17:15:57 -0700 2012
+  Processing by DocumentsController#doc_phone as HTML
+  Parameters: {"username"=>"benhall2121", "user_id"=>"16", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'benhall2121' LIMIT 1
+  [1m[36mDocument Load (0.5ms)[0m  [1mSELECT `documents`.* FROM `documents` WHERE (`documents`.user_id = 16) AND (user_id = '16') ORDER BY updated_at desc[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 156ms
+
+
+Started GET "/" for 127.0.0.1 at Mon May 07 17:15:57 -0700 2012
+  Processing by CompaniesController#home as HTML
+Rendered companies/home.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 39ms (Views: 38.3ms | ActiveRecord: 0.0ms)
