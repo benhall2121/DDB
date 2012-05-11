@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+
+<body>
+
+<div class="report_on_paper" style=" width:800px;border:1px solid black;background-color:white;margin-right:auto;margin-left:auto;margin-top:40px;padding:20px;">
+
+<div align="center"><strong><%= @showUsername + "'s " + @doc.doctype.name %> Document</strong></div>
+<br/><br/>
+
+<div align="center">
+  Attached is a document for <%= @showUsername %>. 
+  <br/>
+  <b>Document Type:</b> <%= @doc.doctype.name %>
+  <br/>
+  <b>Document Description:</b> <%= @doc.description %>
+</div>
+
+<br/><br/>
+
+<div align="center"><a href="<%= @full_url_path + @userCompany.username %>"><%= @userCompany.company_name %></a></div>
+
+
+
+</div>
+
+<br/>
+
+
+</body>
+
+

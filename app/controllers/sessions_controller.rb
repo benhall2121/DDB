@@ -49,5 +49,31 @@ class SessionsController < ApplicationController
     
     redirect_to company_path(red_route), :notice => "User Logged out!"
   end
+
+  def log_in_phone
+    puts ''
+    puts 'log_in_phone'
+    user = User.authenticate(params[:username], params[:password])
+    if user
+      puts 'user'
+      session[:user_id] = user.id
+      session[:user_company_id] = user.company_id
+      
+      respond_to do |format|
+        format.iphone {render :text => "#{user.id}" }   
+        format.html {redirect_to root_url, :notice => "Logged in!"} 
+        format.xml {redirect_to root_url, :notice => "Logged in!" }   
+      end
+    else
+      puts 'no user'
+      flash[:notice] = "Invalid username or password"
+      
+      respond_to do |format|
+        format.iphone {render :text => "No" }   
+        format.html {render "new"} 
+        format.xml {render "new"}   
+      end
+    end
+  end
   
 end

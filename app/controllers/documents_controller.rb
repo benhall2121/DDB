@@ -1,24 +1,43 @@
 class DocumentsController < ApplicationController
   before_filter :require_company, :except => [:index_current_user_docs]	
   before_filter :require_user, :only => [:index_current_user_docs]
-  skip_before_filter :require_company, :only => [:doc_phone]
+  skip_before_filter :require_company, :only => [:doc_phone, :email_doc]
+
 	
+  def email_doc
+    @user = User.authenticate(params[:username], params[:password]);
+    
+    if params[:user_id].to_i == @user.id 
+      @doc = @user.documents.find(:first, :conditions => ['id = ?',params[:doc_id]], :order => 'updated_at desc')
+      DdbMailer.doc_phone_email(@doc, params[:email_to]).deliver  
+    end
+
+    render :nothing => true
+  end
 
   def doc_phone
     @user = User.authenticate(params[:username], params[:password]);
     
     if @user
-      @docs = @user.documents.find(:all, :conditions => ['user_id = ?',params[:user_id]], :order => 'updated_at desc')
+      @docs = @user.documents.find(:all, :order => 'updated_at desc')
+
+      docHashArray = []
+
+      @docs.each do |a|
+
+        eachHash = Hash.new
+        eachHash['doc_id'] = a.id.to_s 
+        eachHash['description'] = a.description 
+        eachHash['doctype_name'] = a.doctype.name
+        eachHash['doc_icon_url'] = request.protocol + request.host_with_port + a.doc.url(:icon)
+        eachHash['doc_original_url'] = request.protocol + request.host_with_port + a.doc.url(:original)
+        
+        docHashArray << eachHash
+      end
+
       respond_to do |format|
         format.iphone {
-          
-          #User Info
-          name = 'We are great'
-          
-          
-        render :text => "#{name}" 
-
-
+          render :json => docHashArray.to_json
         }   
         format.html {redirect_to root_url, :notice => "Logged in!"} 
         format.xml {redirect_to root_url, :notice => "Logged in!" }   
