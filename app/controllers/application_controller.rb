@@ -1,9 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_company_if_current_user
   
   helper_method :current_company, :current_user
 
   private
+
+  def set_company_if_current_user
+    session[:user_company_id] = current_user.company_id if current_user
+  end
+
+  def set_company(user)
+    session[:user_company_id] = user.company_id
+  end
 
   def require_company
     unless current_company
@@ -11,9 +20,19 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_current_user
+    unless current_user
+      if !session[:user_company_id].nil?
+        redirect_to company_path(session[:user_company_id])
+      else
+        redirect_to root_url
+      end
+    end
+  end
+
   def require_user
     if !current_user
-      if users_company
+      if !users_company.nil?
         redirect_to company_path(@user_company.id)
       else
         redirect_to root_url
@@ -32,6 +51,6 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
 end

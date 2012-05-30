@@ -10,6 +10,6 @@ class Document < ActiveRecord::Base
   :path => ":rails_root/public/assets/docs/:id/:style/:basename.:extension",
   :convert_options => { :large => '-quality 100' }
 
-  validates_attachment_size :doc, :less_than => 10.megabytes
+  #validates_attachment_size :doc, :less_than => 10.megabytes
   #validates_attachment_content_type :attached, :content_type => ['image/jpeg', 'image/png', 'application/pdf', 'application/octet-stream', 'application/msword']
 end

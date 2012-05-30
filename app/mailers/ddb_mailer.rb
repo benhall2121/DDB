@@ -18,7 +18,7 @@ class DdbMailer < ActionMailer::Base
 
   def doc_phone_email(sent_email, email_to)
     @doc = sent_email
-    @full_url_path = "http://localhost:3000/"
+    @full_url_path = "http://ddb.benerino.com/"
 
     @showUsername = username(@doc.user)
     @userCompany = user_company_not_logged_in(@doc.user_id)
@@ -29,5 +29,10 @@ class DdbMailer < ActionMailer::Base
     end
 
     mail(:to => email_to, :subject => @showUsername + " " + @doc.doctype.name + " Document.")
+  end
+
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Password Reset"
   end
 end

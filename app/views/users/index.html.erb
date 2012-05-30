@@ -1,29 +1,40 @@
-<h1>Listing users</h1>
 
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Username</th>
-    <th>Email</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.company_id %></td>
-    <td><%= user.username %></td>
-    <td><%= user.email %></td>
-    <td><%= user.name %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div class="page_header">
+  Users
+</div>
 
-<br />
+<div>
 
-<%= link_to 'New User', new_user_path %>
+  <div class="controls_wrapper">
+    <%= link_to 'New User', new_user_path %>
+  </div>
+
+
+  <div class="cool_layout cool_layout_header">
+    <div>
+      Name
+    </div>
+    <div>
+      Username
+    </div>
+    <div>
+      Email
+    </div>
+  </div>
+
+  <% @users.each do |user| %>
+    <div class="cool_layout">
+      <div>
+        <%= link_to user.name, edit_user_path(user) %>
+      </div>
+      <div>
+        <%= user.username %>
+      </div>
+      <div>
+        <%= user.email %>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

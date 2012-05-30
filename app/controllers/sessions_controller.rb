@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if company
       session[:company_id] = company.id
       session[:user_company_id] = company.id
-      redirect_to root_url, :notice => "Company Logged in!"
+      redirect_to company_path(session[:user_company_id]), :notice => "Company Logged in!"
     else
       flash.now.alert = "Invalid username or password"
       render "new"
@@ -25,11 +25,13 @@ class SessionsController < ApplicationController
   end
   
   def create_user
+    #user = User.find_by_username(params[:username])
     user = User.authenticate(params[:username], params[:password])
     if user
+      cookies.permanent[:auth_token] = user.auth_token
       session[:user_id] = user.id
       session[:user_company_id] = user.company_id
-      redirect_to user_path(current_user), :notice => "User Logged in!"
+      redirect_to index_current_user_docs_path(), :notice => "User Logged in!"
     else
       flash.now.alert = "Invalid username or password"
       render "new"
@@ -45,17 +47,15 @@ class SessionsController < ApplicationController
       red_route = session[:user_company_id]
     end
     
+    cookies.delete(:auth_token)
     session[:user_id] = nil
     
     redirect_to company_path(red_route), :notice => "User Logged out!"
   end
 
   def log_in_phone
-    puts ''
-    puts 'log_in_phone'
     user = User.authenticate(params[:username], params[:password])
     if user
-      puts 'user'
       session[:user_id] = user.id
       session[:user_company_id] = user.company_id
       
@@ -65,7 +65,6 @@ class SessionsController < ApplicationController
         format.xml {redirect_to root_url, :notice => "Logged in!" }   
       end
     else
-      puts 'no user'
       flash[:notice] = "Invalid username or password"
       
       respond_to do |format|

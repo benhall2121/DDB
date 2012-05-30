@@ -6,11 +6,31 @@ jQuery.ajaxSetup({
 })
 
 $(document).ready(function() {
-
 		
+  $('.fake_password_field').focus(function(){
+  	$(this).hide();
+  	$('.real_password_field').show().focus();
+  });
+
+  $('.real_password_field').blur(function(){
+  	if($(this).val() == ''){
+  	  $(this).hide();
+  	  $('.fake_password_field').show();
+  	}
+  });
+
 });
 
+function FauxPlaceholder() {
+  if(!ElementSupportAttribute('input','placeholder')){
+  	$('.show_if_placeholder_not_supported').show();
+  }
+}
 
+function ElementSupportAttribute(elm, attr) {
+  var test = document.createElement(elm);
+  return attr in test;
+}
 
 
 

@@ -1,0 +1,33 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  FauxPlaceholder();
+		
+});
+
+</script>
+
+<h1>Sign In</h1>
+
+<%= form_tag sessions_create_user_path do %>
+  <div> 
+  	<span class="show_if_placeholder_not_supported" style="display:none;">Username:<br/></span>
+    <%= text_field_tag :username, params[:username], :placeholder => 'Username' %>
+  </div>
+  <div>
+  	<span class="show_if_placeholder_not_supported" style="display:none;">Password:<br/></span>
+    <%= text_field_tag '', '', :class => 'fake_password_field', :placeholder => 'Password' %>
+    <%= password_field_tag :password, '', :class => 'real_password_field', :style => 'display:none;' %>
+  </div>
+  <div class="button">
+  	<%= label_tag :remember_me %><%= check_box_tag :remember_me, 1, params[:remember_me] %> <%= submit_tag "Log in" %>
+  </div>
+  <div>
+    <%= link_to "forgotten password?", new_password_reset_path %>
+  </div>
+<% end %>
+
+
+
+

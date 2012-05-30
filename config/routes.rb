@@ -1,5 +1,7 @@
 DDB::Application.routes.draw do
 
+  resources :password_resets
+
   resources :abouts
 
   resources :doctypes

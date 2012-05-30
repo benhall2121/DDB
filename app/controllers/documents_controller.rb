@@ -7,7 +7,7 @@ class DocumentsController < ApplicationController
   def email_doc
     @user = User.authenticate(params[:username], params[:password]);
     
-    if params[:user_id].to_i == @user.id 
+    if @user #params[:user_id].to_i == @user.id 
       @doc = @user.documents.find(:first, :conditions => ['id = ?',params[:doc_id]], :order => 'updated_at desc')
       DdbMailer.doc_phone_email(@doc, params[:email_to]).deliver  
     end

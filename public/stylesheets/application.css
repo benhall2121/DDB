@@ -57,8 +57,15 @@ a:hover{
   width:49%;
 }
 
+.main_yield_wrapper{
+  width:90%;
+  margin:0 auto;
+}
+
 .page_header{
   text-align:center;
+  margin:10px 0;
+  font-size:30px;
 }
 
 .all_docs_wrapper{
@@ -74,6 +81,36 @@ a:hover{
   margin:0 3px;
   text-align:center;	
 }
+
+/******************* ADMIN - Users *******************/  
+
+.controls_wrapper{
+  margin:7px 0;
+  font-size:12px;
+}
+
+.cool_layout{
+  border-bottom:1px solid #ccc;
+}
+
+.cool_layout div{
+  padding:12px 2px 12px 7px;
+  display:inline-block;
+  width:32%;
+  margin:0;
+}
+
+.cool_layout_header{
+  border-bottom:1px solid #999999;
+  border-top:1px solid #999999;
+  font-weight:bold;
+  background-color: #eee;
+}
+
+.cool_layout_header div{
+  padding-left:3px;
+}
+/******************* ADMIN - Users *******************/ 
 
 
 

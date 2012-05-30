@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_company, :except => [:show]
+  before_filter :require_current_user, :only => [:show]
 	
   def index
     @users = current_company.users.find(:all, :order => 'name')
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb

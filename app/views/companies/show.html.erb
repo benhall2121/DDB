@@ -1,45 +1,16 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Company name:</b>
-  <%= @company.company_name %>
-</p>
+<div class="page_header">
+  Company Page - <%= @company.company_name %>
+</div>
 
-<p>
-  <b>Url:</b>
-  <%= @company.url %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @company.email %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @company.phone %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @company.address %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @company.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @company.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @company.zip %>
-</p>
+<div>
+  <% if !current_user && !current_company %>
+    <%= render 'sessions/new_user_form.erb' %>
+  <% elsif current_company %>
+  	Current Company
+  <% else %>
+    Current User
+  <% end %>
+</div>
 
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
